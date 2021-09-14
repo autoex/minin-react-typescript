@@ -1,62 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import NavBar from "./components/navbar/Navbar";
 import './index.css'
-import ToDoForm from "./todo__form/ToDoForm";
-import {ITodoItem} from "./interfaces/ITodo";
-import ToDoList from "./components/ToDo/ToDoList";
+import Todo from "./pages/todo/Todo";
+import About from "./pages/about/About";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 const App: React.FC = () => {
-    const [todo, setTodo] = useState<ITodoItem[]>([]);
-    const createToDo = (title: string) => {
-        setTodo(
-            [{
-                id: Date.now(),
-                title: title,
-                completed: false,
-            }, ...todo]
-        )
-    };
-    const completeToDo = (id: number) => {
-        setTodo(prev => prev.map(item => {
-                if (item.id === id) {
-                    return {...item, completed: !item.completed}
-                }
-                return item
-            }
-            )
-        )
-    };
-    const removeToDo = (id: number) => {
-        setTodo(prev => prev.filter(item => item.id !== id)
-        )
 
-    };
-
-    useEffect(()=> {
-        const saved = JSON.parse(localStorage.getItem('todo') || '[]') as ITodoItem[];
-        setTodo(saved)
-
-    }, []);
-
-
-    useEffect(()=> {
-        localStorage.setItem('todo', JSON.stringify(todo))
-
-    }, [todo])
 
     return (
         <>
-            <NavBar/>
-            <div className="container">
-                <ToDoForm
-                    createToDo={createToDo}
-                />
-                <ToDoList
-                    todo={todo}
-                    completeToDo={completeToDo}
-                    removeToDo={removeToDo}
-                />
-            </div>
+            <Router>
+                <NavBar/>
+                <div className="container">
+
+                    <Switch>
+                    <Route path={'/about'} component={About} />
+                    <Route path={'/'} exact component={Todo} />
+                    </Switch>
+                </div>
+            </Router>
         </>
     );
 };
