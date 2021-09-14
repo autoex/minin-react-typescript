@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from "./components/navbar/Navbar";
 import './index.css'
 import ToDoForm from "./todo__form/ToDoForm";
@@ -31,6 +31,18 @@ const App: React.FC = () => {
         )
 
     };
+
+    useEffect(()=> {
+        const saved = JSON.parse(localStorage.getItem('todo') || '[]') as ITodoItem[];
+        setTodo(saved)
+
+    }, []);
+
+
+    useEffect(()=> {
+        localStorage.setItem('todo', JSON.stringify(todo))
+
+    }, [todo])
 
     return (
         <>
