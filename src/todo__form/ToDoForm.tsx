@@ -1,9 +1,20 @@
 import React, {useState} from 'react';
+type ToDoFormProps = {
+    createToDo: (title:string)=> void
 
-const ToDoForm: React.FC = () => {
+}
+const ToDoForm: React.FC<ToDoFormProps> = ({ createToDo}) => {
     const [title, setTitle] = useState<string>('');
     const titleHandler =(e:React.ChangeEvent<HTMLInputElement>)=> {
         setTitle(e.target.value)
+    };
+
+    const keyPressHandler =(e:React.KeyboardEvent<HTMLInputElement>)=> {
+        if(e.key === 'Enter') {
+            createToDo(title);
+            setTitle('')
+        }
+
     }
     return (
         <div className='input-field'>
@@ -11,6 +22,7 @@ const ToDoForm: React.FC = () => {
                    type="text"
                    id='title'
                    onChange={titleHandler}
+                   onKeyDown={keyPressHandler}
             />
             <label
                 htmlFor='title'

@@ -17,3 +17,17 @@ code {
 .container {
   padding: 1rem;
 }
+.todo.completed  span {
+  text-decoration: line-through;
+}
+.todo  {
+  margin-bottom: 1rem;
+  background: whitesmoke;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.todo i {
+  cursor: pointer;
+}
