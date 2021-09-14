@@ -3,7 +3,7 @@ import React from 'react';
 const NavBar: React.FC = () => {
     return (
         <nav>
-            <div className="nav-wrapper purple accent-2">
+            <div className="nav-wrapper teal darken-3 px1">
                 <a href="#" className="brand-logo">React + Typescript</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><a href="/">List</a></li>
