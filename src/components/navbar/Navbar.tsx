@@ -4,7 +4,7 @@ const NavBar: React.FC = () => {
     return (
         <nav>
             <div className="nav-wrapper teal darken-3 px1">
-                <a href="#" className="brand-logo">React + Typescript + ToDo Again))))))))))</a>
+                <NavLink to="/" className="brand-logo">React + Typescript + ToDo Again))))))))))</NavLink>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink to='/' >List</NavLink></li>
                     <li><NavLink to="/about">About Us</NavLink></li>

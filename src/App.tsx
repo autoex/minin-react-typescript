@@ -6,8 +6,7 @@ import About from "./pages/about/About";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 const App: React.FC = () => {

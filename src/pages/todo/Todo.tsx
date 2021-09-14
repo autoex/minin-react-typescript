@@ -15,6 +15,7 @@ const Todo: React.FC = () => {
         )
     };
     const completeToDo = (id: number) => {
+
         setTodo(prev => prev.map(item => {
                 if (item.id === id) {
                     return {...item, completed: !item.completed}
